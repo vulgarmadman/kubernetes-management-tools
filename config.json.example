@@ -1,0 +1,16 @@
+{
+    "gke_cluster_1": {
+        "platform": "gcloud",
+        "name": "gke_cluster_1",
+        "auth": {
+            "cluster_name": "test-cluster",
+            "project_id": "GCLOUD_PROJECT_ID",
+            "zone": "GCLOUD_GKE_ZONE",
+            "key_file": "iam-key.json"
+        }
+    },
+    "minikube": {
+        "platform": "minikube",
+        "name": "minikube"
+    }
+}
