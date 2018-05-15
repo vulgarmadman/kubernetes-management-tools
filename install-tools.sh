@@ -1,7 +1,8 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-CONFIG_FILE="$DIR/config.json"
+CONFIG_FILE="$DIR/config.yaml"
+YQ="yq"
 
 install_config() {
     if [ -f "$CONFIG_FILE" ]; then
@@ -31,6 +32,18 @@ update_path() {
     esac
 }
 
+check_required() {
+    $YQ
+    echo $?
+
+    if [ $? -eq 127 ]; then
+        echo "yq needs to be installed to process yaml files."
+        echo "this can be downloaded from here: https://github.com/kislyuk/yq"
+        echo
+        exit 1
+    fi
+}
+
 if [ ! -f "$CONFIG_FILE" ]; then
     install_config
 else
@@ -44,4 +57,5 @@ else
     esac
 fi
 
+check_required
 update_path

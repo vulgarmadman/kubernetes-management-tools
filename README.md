@@ -14,6 +14,7 @@ Currently this tool will work with Kubernetes clusters on the following platform
 
 * Minikube installed and configured for "minikube" platform usage
 * Docker installed
+* YQ installed <https://github.com/kislyuk/yq>(https://github.com/kislyuk/yq)
 * GCloud SDK for "gcloud" platform usage
 * AWS SDK for "aws" platform
 

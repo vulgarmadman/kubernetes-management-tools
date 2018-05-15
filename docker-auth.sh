@@ -1,9 +1,9 @@
 #!/bin/bash
 
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
-CONFIG_FILE="$DIR/config.json"
-JQ="jq"
-CLUSTER_LIST=$(cat $CONFIG_FILE | $JQ ".[].name")
+CONFIG_FILE="$DIR/config.yaml"
+JQ="yq"
+CLUSTER_LIST=$(cat $CONFIG_FILE | $JQ ".docker[].name")
 ID=$1
 PROVIDERS="$DIR/providers"
 
@@ -61,7 +61,7 @@ selection_auth() {
         if [ "${counter}" == "${chosen}" ]; then
             export index=${line//\"}
             export CLUSTER_NAME=$index
-            export PLATFORM=$(cat $CONFIG_FILE | $JQ '.["'${index}'"].platform')
+            export PLATFORM=$(cat $CONFIG_FILE | $JQ '.docker["'${index}'"].platform')
 
             selection_list
 
@@ -73,7 +73,7 @@ direct_auth() {
     index=$1
 
     export CLUSTER_NAME=$index
-    export PLATFORM=$(cat $CONFIG_FILE | $JQ '.["'${index}'"].platform')
+    export PLATFORM=$(cat $CONFIG_FILE | $JQ '.docker["'${index}'"].platform')
 
     if [ "$PLATFORM" == "null" ]; then
         echo "The provided index does not exist in the config file"

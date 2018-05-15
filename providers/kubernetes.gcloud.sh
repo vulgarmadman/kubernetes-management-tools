@@ -1,7 +1,7 @@
-ZONE=$(cat $CONFIG_FILE | $JQ '.["'${index}'"].auth.zone')
-KEYFILE=$(cat $CONFIG_FILE | $JQ '.["'${index}'"].auth.key_file')
-PROJECT=$(cat $CONFIG_FILE | $JQ '.["'${index}'"].auth.project_id')
-GKE_CLUSTER=$(cat $CONFIG_FILE | $JQ '.["'${index}'"].auth.cluster_name')
+ZONE=$(cat $CONFIG_FILE | $JQ '.kubernetes["'${index}'"].auth.zone')
+KEYFILE=$(cat $CONFIG_FILE | $JQ '.kubernetes["'${index}'"].auth.key_file')
+PROJECT=$(cat $CONFIG_FILE | $JQ '.kubernetes["'${index}'"].auth.project_id')
+GKE_CLUSTER=$(cat $CONFIG_FILE | $JQ '.kubernetes["'${index}'"].auth.cluster_name')
 echo "Cluster-name: $GKE_CLUSTER"
 echo "Zone: $ZONE"
 echo "Keyfile: $KEYFILE"

@@ -1,0 +1,42 @@
+---
+
+# Enter kubernetes cluster details here
+kubernetes:
+  # Google GKE example
+  gce_production:
+    platform: gcloud
+    name: gce_production
+    auth:
+      cluster_name: cluster1
+      project_id: project-id-001
+      zone: europe-west1-d
+      key_file: ~/.secure-keys/deploy-key.json
+  # Minikube local instance
+  minikube:
+    platform: minikube
+    name: minikube
+
+# Enter config information for docker logins
+docker:
+  # Google container engine example
+  channels_production:
+    name: gce_production
+    platform: gcloud
+    auth:
+      project_id: project-id-001
+      key_file: ~/.secure-keys/deploy-key.json
+  # Private registry on dockerhub
+  dockerhubauth:
+    name: dockerhubauth
+    platform: dockerhub
+    auth:
+      username: dockerhubauth
+      password: D0cK3rHu8
+  # Private registry with username/password
+  private-registry:
+    name: private-registry
+    repository: localhost:5000
+    platform: private-registry
+    auth:
+      username: username
+      password: password
