@@ -9,6 +9,16 @@
             "key_file": "iam-key.json"
         }
     },
+    "aws_cluster_1": {
+        "platform": "aws",
+        "name": "aws_cluster_1",
+        "context": "aws-cluster-1.k8s.local",
+        "auth": {
+            "aws_default_region": "",
+            "aws_access_key_id": "",
+            "aws_secret_access_key": ""
+        }
+    }
     "minikube": {
         "platform": "minikube",
         "name": "minikube"
